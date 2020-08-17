@@ -112,7 +112,7 @@ def countElementsByCriteria(criteria, column, list,directors_id):
     promedio=0
     counter=0
     for element in list:
-        if element[column] in directors_id[1] and float(element["vote_average"]) >= 6:
+        if element[column] in directors_id and float(element["vote_average"]) >= float(6):
             counter += 1 
             promedio += float(element["vote_average"] )
     return counter,(promedio/counter)
@@ -142,12 +142,12 @@ def main():
             elif int(inputs[0])==3: #opcion 3
                 criteria =input('Ingrese el nombre del director de interes\n')
                 counter=countElementsFilteredByColumn(criteria,"director_name", lista2) #filtrar una columna por criterio  
-                print("Coinciden ",counter[1]," elementos con el crtierio: ", criteria  )
+                print("Coinciden ",counter[0]," elementos con el crtierio: ", criteria  )
             elif int(inputs[0])==4: #opcion 4
                 criteria =input('Ingrese el nombre de director de interes\n')
                 directors_id=(countElementsFilteredByColumn(criteria,"director_name", lista2))[1]
-                counter=countElementsByCriteria(criteria,"id",lista,directors_id)
-                print("Coinciden ",counter[0]," elementos con el crtierio:", criteria ,"Con un promedio de:", round(counter[1],2))
+                resp=countElementsByCriteria(criteria,"id",lista,directors_id)
+                print("Coinciden ",resp[0]," elementos con el crtierio:", criteria ,"Con un promedio de:", resp[1])
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0) 
 
