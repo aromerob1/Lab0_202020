@@ -142,7 +142,12 @@ def main():
             elif int(inputs[0])==3: #opcion 3
                 criteria =input('Ingrese el nombre del director de interes\n')
                 counter=countElementsFilteredByColumn(criteria,"director_name", lista2) #filtrar una columna por criterio  
-                print("Coinciden ",counter[0]," elementos con el crtierio: ", criteria  )
+                print("Coinciden ",counter[1]," elementos con el crtierio: ", criteria  )
+            elif int(inputs[0])==4: #opcion 4
+                criteria =input('Ingrese el nombre de director de interes\n')
+                directors_id=(countElementsFilteredByColumn(criteria,"director_name", lista2))[1]
+                counter=countElementsByCriteria(criteria,"id",lista,directors_id)
+                print("Coinciden ",counter[0]," elementos con el crtierio:", criteria ,"Con un promedio de:", round(counter[1],3))
             elif int(inputs[0])==4: #opcion 4
                 criteria =input('Ingrese el nombre de director de interes\n')
                 directors_id=(countElementsFilteredByColumn(criteria,"director_name", lista2))[1]
@@ -153,3 +158,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
